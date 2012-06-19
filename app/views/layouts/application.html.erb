@@ -38,9 +38,19 @@
         $('section#panelhelp').toggle();
       });
 
+      $('li#panellinksetting').click(function(){
+        $(this).toggleClass('selected');
+        $('section#panelsetting').toggle();
+      });
+
       $('li#panellinkclear').click(function(){
          $('div#opensesame').empty();
       });
+    });
+
+    $('section#panelsetting').delegate( "#bodycolor" ,"keydown", function(){
+      var color = $('#bodycolor').val();
+      $('body').css("background", color);
     });
 
     var editor = CodeMirror.fromTextArea(document.getElementById("code"), 

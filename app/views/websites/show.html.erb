@@ -3,7 +3,7 @@
         <%= link_to ("#{current_user.name} . #{@website.title}"), current_user %>
     </span>
     <ul class="control-panel">
-        <li>setting</li>
+        <li id="panellinksetting">setting</li>
         <li id="panellinkcode" class="selected">code</li>
         <li id="panellinkportfolio" class="selected">portfolio</li>
         <li id="panellinkhelp">help</li>
@@ -14,9 +14,15 @@
 
 <div id="opensesame"></div>
 
+<section id="panelsetting" class="panel draggable">
+    <header>setting</header>
+    <input type="text" placeholder="key in #value to change background color!" id="bodycolor" style="width:300px;"/>
+</section>
+
+
 <section id="panelcode" class="panel draggable">
     <header>codes</header>
-    <!--<div class="newform"><%= render template:"codes/new" %></div>-->
+    <!--<div class="newform"> render template codes new</div>-->
     <% if @website.codes.any? %> 
         <ul id="codes">
             <% @website.codes.each do |code| %>
