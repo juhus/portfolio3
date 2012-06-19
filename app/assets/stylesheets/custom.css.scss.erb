@@ -60,7 +60,9 @@ ul#codes li, ul#portfolios li {
     float:right;
     position:static;
     margin: 15px 0 0 15px;
-    width:490px;
+    min-width:490px;
+    max-width:90%;
+    display:inline;
     background:rgba(255,255,255,1);
     -webkit-border-radius:5px;
     -moz-border-radius:5px;
@@ -92,6 +94,14 @@ ul#codes li, ul#portfolios li {
     top:50px;
     left:520px;
     z-index:10;
+}
+
+#panelhelp{
+    position:absolute;
+    top:50px;
+    left:700px;
+    z-index:10;
+    display:none;
 }
 
 .hide{

@@ -6,16 +6,17 @@
         <li>setting</li>
         <li id="panellinkcode" class="selected">code</li>
         <li id="panellinkportfolio" class="selected">portfolio</li>
-        <li><%= link_to 'files', '#' %></li>
-        <!--1<li id="clearpanels">clear</li> -->
+        <li id="panellinkhelp">help</li>
+        <li id="panellinkclear">clear</li>
         <span style="color:#444; cursor:move; margin-left:30px;">|||</span>
     </ul>
 </div>
 
 <div id="opensesame"></div>
+
 <section id="panelcode" class="panel draggable">
     <header>codes</header>
-    <div class="newform"><%= render template:"codes/new" %></div>
+    <!--<div class="newform"><%= render template:"codes/new" %></div>-->
     <% if @website.codes.any? %> 
         <ul id="codes">
             <% @website.codes.each do |code| %>
@@ -37,20 +38,7 @@
     <% end %>
 </section>
 
-
-<script>
-  //$('li#clearpanels').click(function(){
-  //   $('#opensesame').empty();
-  //  $('ul.control-panel li').removeClass('selected');
-  //});
-
-  $('li#panellinkcode').click(function(){
-      $(this).toggleClass('selected');
-      $('section#panelcode').toggle();
-  });
-
-  $('li#panellinkportfolio').click(function(){
-      $(this).toggleClass('selected');
-      $('section#panelportfolio').toggle();
-  });
-</script>
+<section id="panelhelp" class="panel draggable">
+    <header>help</header>
+    <%= render "shared/help" %>
+</section>

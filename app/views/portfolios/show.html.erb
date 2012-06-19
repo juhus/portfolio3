@@ -1,1 +1,9 @@
-<%=h (@portfolio.content) %>
+<%= raw(@portfolio.content) %>
+
+<%= content_for(:navigator) do %>
+<div id="navigator-title">
+	<% @website.portfolios.each do |portfolio| %>
+            <p><%= link_to portfolio.title, [@website, portfolio] %></p>
+    <% end %>
+</div>
+<% end %>

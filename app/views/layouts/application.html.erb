@@ -22,6 +22,25 @@
    
     $(document).ready(function(){
       $('.draggable').draggable();
+
+      $('li#panellinkcode').click(function(){
+        $(this).toggleClass('selected');
+        $('section#panelcode').toggle();
+      });
+
+      $('li#panellinkportfolio').click(function(){
+        $(this).toggleClass('selected');
+        $('section#panelportfolio').toggle();
+      });
+
+      $('li#panellinkhelp').click(function(){
+        $(this).toggleClass('selected');
+        $('section#panelhelp').toggle();
+      });
+
+      $('li#panellinkclear').click(function(){
+         $('div#opensesame').empty();
+      });
     });
 
     var editor = CodeMirror.fromTextArea(document.getElementById("code"), 
