@@ -4,6 +4,7 @@
   <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <script src="jquery.ui.touch-punch.min.js"></script>
 
   <%= csrf_meta_tags %>
   <!--[if lt IE 9]>
@@ -20,27 +21,29 @@
 
 <script>
     $(document).ready(function(){
-      $.extend($.support, {
-        touch: "ontouchend" in document
-});
+      $.fn.draggable = function() {  
+        var offset = null;  
+        var start = function(e) {  
+          var orig = e.originalEvent;  
+          var pos = $(this).position();  
+          offset = {  
+            x: orig.changedTouches[0].pageX - pos.left,  
+            y: orig.changedTouches[0].pageY - pos.top  
+          };  
+        };  
+        var moveMe = function(e) {  
+          e.preventDefault();  
+          var orig = e.originalEvent;  
+          $(this).css({  
+            top: orig.changedTouches[0].pageY - offset.y,  
+            left: orig.changedTouches[0].pageX - offset.x  
+          });  
+        };  
+        this.bind("touchstart", start);  
+        this.bind("touchmove", moveMe);  
+      };  
 
-//
-// Hook up touch events
-//
-$.fn.addTouch = function() {
-        if ($.support.touch) {
-                this.each(function(i,el){
-                        el.addEventListener("touchstart", iPadTouchHandler, false);
-                        el.addEventListener("touchmove", iPadTouchHandler, false);
-                        el.addEventListener("touchend", iPadTouchHandler, false);
-                        el.addEventListener("touchcancel", iPadTouchHandler, false);
-                });
-        }
-};
-
-var lastTap = null; 
-
-      $('.draggable').draggable().addTouch();
+      $('.draggable').draggable();
 
       $('li#panellinkcode').click(function(){
         $(this).toggleClass('selected');
