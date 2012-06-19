@@ -7,6 +7,7 @@ gem 'acts_as_list'
 gem 'acts_as_tree'
 gem 'bcrypt-ruby'
 gem 'will_paginate'
+gem 'jquery_mobile_rails'
 
 group :production do
 	gem 'pg'
