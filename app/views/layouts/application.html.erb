@@ -4,7 +4,6 @@
   <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
-  <script src="jquery.ui.touch-punch.min.js"></script>
 
   <%= csrf_meta_tags %>
   <!--[if lt IE 9]>
@@ -20,9 +19,28 @@
 <%= yield %>
 
 <script>
-   
     $(document).ready(function(){
-      $('.draggable').draggable();
+      $.extend($.support, {
+        touch: "ontouchend" in document
+});
+
+//
+// Hook up touch events
+//
+$.fn.addTouch = function() {
+        if ($.support.touch) {
+                this.each(function(i,el){
+                        el.addEventListener("touchstart", iPadTouchHandler, false);
+                        el.addEventListener("touchmove", iPadTouchHandler, false);
+                        el.addEventListener("touchend", iPadTouchHandler, false);
+                        el.addEventListener("touchcancel", iPadTouchHandler, false);
+                });
+        }
+};
+
+var lastTap = null; 
+
+      $('.draggable').draggable().addTouch();
 
       $('li#panellinkcode').click(function(){
         $(this).toggleClass('selected');
