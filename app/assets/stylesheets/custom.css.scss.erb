@@ -13,27 +13,42 @@ a, a:visited {
 }
 
 header{
-    font-size:24px;
-    color:#aaa;
+    font-size:16px;
     font-weight:bold;
+    color:#fff;
+    margin-bottom:8px;
 }
 
 input,select,textarea{
     position:relative;
+    margin:3px 3px 6px 0;
+    padding:0;
+    border-radius:2px;
+    border:none;
+    height:18px;
 }
 
 input,button {
-    width:150px;
+    min-width:120px;
+}
+
+input[type="submit"]{
+  margin:3px 3px 6px 0;
+  border-radius:2px;
+  border:none;
+  background: #ddd;
+  &:hover{background: #bbb;}
 }
 
 ul#codes li, ul#portfolios li {
     margin:3px;
     padding:6px;
     display:block;
-    background: #eee;
+    background: rgba(240,240,240,0.3);
     -webkit-border-radius:2px;
     -moz-border-radius:2px;
     border-radius:2px;
+    color:#fff;
 }
 
 .newform{
@@ -61,9 +76,9 @@ ul#codes li, ul#portfolios li {
     position:static;
     margin: 15px 0 0 15px;
     min-width:300px;
-    max-width:90%;
+    max-width: 800px;
     display:inline;
-    background:rgba(255,255,255,1);
+    background:rgba(100,100,100,0.8);
     -webkit-border-radius:5px;
     -moz-border-radius:5px;
     border-radius:5px;
@@ -72,6 +87,7 @@ ul#codes li, ul#portfolios li {
     box-shadow:2px 2px 8px #555;
     padding:8px;
     z-index:20;
+    border:1px solid #777;
 }
 
 #adminbar{
@@ -105,7 +121,6 @@ ul#codes li, ul#portfolios li {
 }
 
 .hide{
-    color:#222;
     font-size:10px;
     position:absolute;
     right: 5px;
