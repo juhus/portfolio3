@@ -1,0 +1,23 @@
+<% provide(:title, @user.name) %>
+
+<h1>
+  <%= gravatar_for @user %>
+  <%= @user.name %>
+</h1>
+
+<p>
+<%= link_to 'create new website', new_website_path %>
+</p>
+
+
+<% if @user.websites.any? %> 
+<p> You have <%= pluralize(@user.websites.count, "website") %>: <ul>
+	<% @user.websites.each do |website| %>
+		<li><%= link_to website.title, website %></li>
+	<% end %>
+</ul>
+<% end %>
+
+<p>
+<%= link_to "Sign out", signout_path, method: "delete" %>
+</p>

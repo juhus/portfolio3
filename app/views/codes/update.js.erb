@@ -1,0 +1,4 @@
+$('body').prepend('<div class="alert alert-success "> Saved! </div>');
+$('body>div.alert').queue(function(){
+	$(this).fadeIn(800).delay(3000).slideDown(800);
+});

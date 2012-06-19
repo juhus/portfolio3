@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+
+  <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+	<% flash.each do |key, value| %>
+	    <div class="alert alert-<%= key %>"><%= value %></div>
+	<% end %>
+
+<%= yield %>
+
+<script>
+   
+    $(document).ready(function(){
+      $('.draggable').draggable();
+    });
+
+    var editor = CodeMirror.fromTextArea(document.getElementById("code"), 
+      {   lineNumbers: true,
+          matchBrackets: true,
+          mode: "htmlmixed",
+          indentUnit: 4,
+          indentWithTabs: true,
+          enterMode: "keep",
+          tabMode: "shift",
+          theme: "monokai"
+      });
+
+    //$(".panel").prepend('<a href="#" class="hide">hide</a>');   
+
+    //$('.codepanel').click(function(){
+    //  $('.codepanel').remove();
+    //});
+
+    //$('#portfoliopanellink').click(function(){
+    //  $('#portfoliopanel').toggle();
+    //});
+
+</script>
+
+</body>
+</html>

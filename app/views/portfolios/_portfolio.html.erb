@@ -1,0 +1,7 @@
+<%= div_for portfolio do %>
+	<li><%= portfolio.title %> | 
+        <%= link_to 'preview', [@website, portfolio] %> | 
+        <%= link_to 'edit', edit_website_portfolio_path(@website, portfolio), remote: true  %> | 
+		<%= link_to 'delete', [@website, portfolio], method: :delete, remote: true  %>
+    </li>
+<% end %>

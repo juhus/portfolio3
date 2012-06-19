@@ -1,0 +1,56 @@
+<div class="bar draggable" id="adminbar">
+    <span class="admintitle">
+        <%= link_to ("#{current_user.name} . #{@website.title}"), current_user %>
+    </span>
+    <ul class="control-panel">
+        <li>setting</li>
+        <li id="panellinkcode" class="selected">code</li>
+        <li id="panellinkportfolio" class="selected">portfolio</li>
+        <li><%= link_to 'files', '#' %></li>
+        <!--1<li id="clearpanels">clear</li> -->
+        <span style="color:#444; cursor:move; margin-left:70px;">|||</span>
+    </ul>
+</div>
+
+<div id="opensesame"></div>
+<section id="panelcode" class="panel draggable">
+    <header>codes</header>
+    <div class="newform"><%= render template:"codes/new" %></div>
+    <% if @website.codes.any? %> 
+        <ul id="codes">
+            <% @website.codes.each do |code| %>
+            <%= render code %>
+        <% end %>
+        </ul>
+    <% end %>
+</section>
+
+<section id="panelportfolio" class="panel draggable">
+    <header>portfolio</header>
+    <div class="newform"><%= render template:"portfolios/new" %></div>
+    <% if @website.portfolios.any? %> 
+        <ul id="portfolios">
+            <% @website.portfolios.each do |portfolio| %>
+            <%= render portfolio %>
+        <% end %>
+        </ul>
+    <% end %>
+</section>
+
+
+<script>
+  //$('li#clearpanels').click(function(){
+  //   $('#opensesame').empty();
+  //  $('ul.control-panel li').removeClass('selected');
+  //});
+
+  $('li#panellinkcode').click(function(){
+      $(this).toggleClass('selected');
+      $('section#panelcode').toggle();
+  });
+
+  $('li#panellinkportfolio').click(function(){
+      $(this).toggleClass('selected');
+      $('section#panelportfolio').toggle();
+  });
+</script>

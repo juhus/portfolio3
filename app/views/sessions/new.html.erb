@@ -1,0 +1,12 @@
+<% provide(:title, "Sign in") %>
+<p>New user? <%= link_to "Sign up now!", signup_path %></p>
+
+<div class="box">
+<%= form_for(:session, url: sessions_path) do |f| %>	      
+	<p><%= f.text_field :email, placeholder:"email", class:"signin" %></p>
+	<p><%= f.password_field :password, placeholder: "password", class:"signin" %></p>
+	<%= f.submit "Sign in", class:"signin" %>
+<% end %>
+
+</div>
+

@@ -1,0 +1,19 @@
+var popup = '<div class="panel"> <%= escape_javascript(render "form") %> </div>'
+$('div#opensesame').prepend(popup);
+$('div#opensesame>div.panel').prepend('<div class="drag"></div><a href="#" class="hide">hide</a>').draggable({handle:'.drag'});
+
+$('.hide').click(function(e){
+      e.preventDefault();
+      $(this).parent().remove();
+    });
+    
+var editor = CodeMirror.fromTextArea(document.getElementById("code"), 
+      {   lineNumbers: true,
+          matchBrackets: true,
+          mode: "htmlmixed",
+          indentUnit: 4,
+          indentWithTabs: true,
+          enterMode: "keep",
+          tabMode: "shift",
+          theme: "monokai"
+      });

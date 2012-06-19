@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <%= default_head %>
+  <style type="text/css"><%= default_css %></style>
+</head>
+<body>
+
+<%= default_layout %>
+
+<%= yield %>
+
+</body>
+</html>
