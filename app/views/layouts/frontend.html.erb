@@ -11,7 +11,7 @@
 </head>
 <body>
 <% if(signed_in?) %>
-	<%= link_to "editor mode", admin_website_path(@website), id:'back_to_admin' %>
+	<%= link_to "editor mode", website_path(@website), id:'back_to_admin' %>
 <% end %>
 <%= default_layout %>
 <%= yield :navigator %>
