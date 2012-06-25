@@ -2,6 +2,8 @@
 	<%= f.text_field :title, placeholder:"title" %>
 	<%= f.text_field :permalink, placeholder:"permalink" %>
 	<%= f.text_area :content, placeholder:"content", class:"code", id:"code" %>
+	image: <%= f.file_field :image %><br />
+	thumbnail: <%= f.file_field :thumb %><br />
 	<%= f.label :publish %>
 	<%= f.check_box :publish %>
 	<%= f.submit 'update' %>

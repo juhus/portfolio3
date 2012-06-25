@@ -1,7 +1,10 @@
 body{
-    background:#eee;
-    font: 14px bold 'Helvetica';
+    background:#fff;
+    font-size: 14px;
+    font-family: 'Arial';
     }
+
+.ui-resizable-helper { border: 2px dotted #00F; }
 
 ul {
     padding:0;
@@ -17,30 +20,18 @@ header{
     font-weight:bold;
     color:#fff;
     margin-bottom:8px;
+    text-shadow: 0 1px 0 #ccc;
 }
 
-input,select,textarea{
-    position:relative;
+input,select{
     margin:3px 3px 6px 0;
-    padding:0;
-    border-radius:2px;
-    border:none;
-    height:18px;
 }
 
-input,button {
-    min-width:120px;
+textarea {
+    height:50px;
 }
 
-input[type="submit"]{
-  margin:3px 3px 6px 0;
-  border-radius:2px;
-  border:none;
-  background: #ddd;
-  &:hover{background: #bbb;}
-}
-
-ul#codes li, ul#portfolios li {
+ul#codes li, ul#portfolios li, ul#websites li {
     margin:3px;
     padding:6px;
     display:block;
@@ -67,32 +58,32 @@ ul#codes li, ul#portfolios li {
 
 #opensesame {
     position: absolute;
-    top:10%;
-    left: 1%;
+    top:40px;
+    left: 360px;
 }
 
 .panel{
     float:right;
-    position:static;
+    position:absolute;
     margin: 15px 0 0 15px;
-    min-width:300px;
+    min-width:320px;
     max-width: 800px;
     display:inline;
-    background:rgba(100,100,100,0.8);
-    -webkit-border-radius:5px;
-    -moz-border-radius:5px;
-    border-radius:5px;
+    background:rgba(100,100,100,0.9);
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
     -webkit-box-shadow: 2px 2px 8px #555;
     -moz-box-shadow:2px 2px 8px #555;
     box-shadow:2px 2px 8px #555;
     padding:8px;
-    z-index:20;
     border:1px solid #777;
+    z-index:2;
 }
 
 #adminbar{
     position:fixed;
-    z-index:90;
+    z-index:3;
     top:15px;
     left:20px;
     display:inline;
@@ -100,23 +91,23 @@ ul#codes li, ul#portfolios li {
 
 #panelcode{
     position:absolute;
-    top:50px;
+    top:40px;
     left:5px;
-    z-index:10;
+    z-index:1;
 }
 
 #panelportfolio{
     position:absolute;
-    top:50px;
-    left:520px;
-    z-index:10;
+    top:205px;
+    left:5px;
+    z-index:1;
 }
 
-#panelhelp, #panelsetting{
+#panelhelp, #panelsetting, #paneluser, #panelwebsite{
     position:absolute;
-    top:50px;
-    left:700px;
-    z-index:10;
+    top:40px;
+    left:5px;
+    z-index:2;
     display:none;
 }
 
@@ -131,7 +122,6 @@ ul#codes li, ul#portfolios li {
     margin: 50px auto;
     width: 300px;
     height: 156px;
-    background:#fff;
     -webkit-border-radius:2px;
     -moz-border-radius:2px;
     border-radius:2px;
@@ -140,6 +130,19 @@ ul#codes li, ul#portfolios li {
     -moz-box-shadow:2px 2px 8px #555;
     box-shadow:2px 2px 8px #555;
     padding:10px;
+    background-image: linear-gradient(bottom, rgb(189,189,189) 0%, rgb(235,235,235) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(189,189,189) 0%, rgb(235,235,235) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(189,189,189) 0%, rgb(235,235,235) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(189,189,189) 0%, rgb(235,235,235) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(189,189,189) 0%, rgb(235,235,235) 100%);
+
+    background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, rgb(189,189,189)),
+    color-stop(1, rgb(235,235,235))
+    );
     }
 
 input[type="text"].signin,input[type="password"].signin {
@@ -157,9 +160,6 @@ input[type="text"].signin,input[type="password"].signin {
     -moz-box-shadow: inset 0 0 5px #555;
     box-shadow: inset 0 0 5px #555;
     }
-
-::-webkit-input-placeholder  { color:#ccc; font-size: 12px; font-weight: bold; padding:3px;}
-input:-moz-placeholder { color:#ccc; font-size: 12px; font-weight: bold; padding:3px;}
 
 input[type="submit"].signin{
     color:#fff;
@@ -209,7 +209,7 @@ input[type="submit"].signin{
 .bar {
   opacity:0.9;
   height:30px;
-  padding: 0 3px 0 15px;
+  padding: 0 3px 0 5px;
   border:1px solid #555;
   -webkit-border-radius:3px;
   -moz-border-radius:3px;
@@ -246,7 +246,7 @@ input[type="submit"].signin{
     }
     }
 
-.admintitle, .control-panel{
+.control-panel{
     font-size: 18px;
     font-weight:bold;
     color:#222;
@@ -302,31 +302,4 @@ section ul{
     font-weight:bold;
     padding:2%;
     }
-}
-
-.cm-s-monokai {background: #272822; color: #f8f8f2;}
-.cm-s-monokai div.CodeMirror-selected {background: #49483E !important;}
-.cm-s-monokai .CodeMirror-gutter {background: #272822; border-right: 0px;}
-.cm-s-monokai .CodeMirror-gutter-text {color: #d0d0d0;}
-.cm-s-monokai .CodeMirror-cursor {border-left: 1px solid #f8f8f0 !important;}
-
-.cm-s-monokai span.cm-comment {color: #75715e;}
-.cm-s-monokai span.cm-atom {color: #ae81ff;}
-.cm-s-monokai span.cm-number {color: #ae81ff;}
-
-.cm-s-monokai span.cm-property, .cm-s-monokai span.cm-attribute {color: #a6e22e;}
-.cm-s-monokai span.cm-keyword {color: #f92672;}
-.cm-s-monokai span.cm-string {color: #e6db74;}
-
-.cm-s-monokai span.cm-variable {color: #a6e22e;}
-.cm-s-monokai span.cm-variable-2 {color: #9effff;}
-.cm-s-monokai span.cm-def {color: #fd971f;}
-.cm-s-monokai span.cm-error {background: #f92672; color: #f8f8f0;}
-.cm-s-monokai span.cm-bracket {color: #f8f8f2;}
-.cm-s-monokai span.cm-tag {color: #f92672;}
-.cm-s-monokai span.cm-link {color: #ae81ff;}
-
-.cm-s-monokai .CodeMirror-matchingbracket {
-  text-decoration: underline;
-  color: white !important;
 }

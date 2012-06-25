@@ -43,6 +43,16 @@
         $('section#panelsetting').toggle();
       });
 
+      $('li#panellinkuser').click(function(){
+        $(this).toggleClass('selected');
+        $('section#paneluser').toggle();
+      });
+
+      $('li#panellinkwebsite').click(function(){
+        $(this).toggleClass('selected');
+        $('section#panelwebsite').toggle();
+      });
+
       $('li#panellinkclear').click(function(){
          $('div#opensesame').empty();
       });
@@ -52,17 +62,6 @@
       var color = $('#bodycolor').val();
       $('body').css("background", color);
     });
-
-    var editor = CodeMirror.fromTextArea(document.getElementById("code"), 
-      {   lineNumbers: true,
-          matchBrackets: true,
-          mode: "htmlmixed",
-          indentUnit: 4,
-          indentWithTabs: true,
-          enterMode: "keep",
-          tabMode: "shift",
-          theme: "monokai"
-      });
 
     //$(".panel").prepend('<a href="#" class="hide">hide</a>');   
 

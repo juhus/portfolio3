@@ -1,20 +1,40 @@
 class WebsitesController < ApplicationController
   before_filter :signed_in_user
-
-	  def new
-	 	  @website = Website.new
-  	end
-
-  	def create
+  before_filter :admin_user
+  before_filter :get_website_here, except: :create 
+  	
+    def create
   		@website = Website.new(params[:website])
   		@website.user_id = current_user.id
-  		@website.save
-  		redirect_to @website
+      respond_to do |format|
+        if @website.save
+          format.html { redirect_to @website }
+          format.js
+        else
+          redirect_to admin_website_path(@website)
+        end      
+      end
   	end
 
-  	def show
-  		@website = Website.find(params[:id])
-      @code = Code.new
-      @portfolio = Portfolio.new
+    def show
+      store_location
+      @user = current_user
+    end
+
+  	def update
+      @website.update_attributes(params[:website])
+      redirect_to @website
   	end
+
+    def destroy
+      @website.destroy
+      respond_to do |format|
+        format.html { redirect_back_or (@website.next)}
+        format.js
+      end
+    end
+
+    def get_website_here
+      @website = Website.find_by_title(params[:id])
+    end
 end

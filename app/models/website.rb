@@ -4,4 +4,8 @@ class Website < ActiveRecord::Base
   has_many :codes, dependent: :destroy
   has_many :portfolios, dependent: :destroy
   validates :user_id, presence:true
+	
+  def to_param
+	title.parameterize
+  end
 end

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= full_title(yield(:title)) %></title>
+  <title><%= "#{@website.title} #{@portfolio.title}" %></title>
   <%= csrf_meta_tags %>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -10,7 +10,9 @@
   <style type="text/css"><%= default_css %></style>
 </head>
 <body>
-
+<% if(signed_in?) %>
+	<%= link_to "editor mode", admin_website_path(@website), id:'back_to_admin' %>
+<% end %>
 <%= default_layout %>
 <%= yield :navigator %>
 <%= yield %>

@@ -1,7 +1,7 @@
 class CodesController < ApplicationController
   before_filter :signed_in_user
-  before_filter :get_website, except: [:new]
-  before_filter :get_code, except: [:new, :create]
+  before_filter :get_website
+  before_filter :get_code, except: [:create]
 
   def get_code
     @code = @website.codes.find(params[:id])

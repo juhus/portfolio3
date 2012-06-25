@@ -1,5 +1,5 @@
-<%= form_for([@website, @portfolio], remote: true) do |f| %>
+<%= form_for([@website, Portfolio.new], remote: true) do |f| %>
 	<%= f.text_field :title, placeholder:"title" %>
 	<%= f.text_field :permalink, placeholder:"permalink" %>
-	<%= f.submit %>
+	<br /><%= f.submit %>
 <% end %>

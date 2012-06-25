@@ -33,6 +33,9 @@ module SessionsHelper
   	session[:return_to] = request.fullpath
 	end
 	def get_website
-		@website = Website.find(params[:website_id])
-	end  		 
+		@website = Website.find_by_title(params[:website_id])
+	end 
+	def admin_user
+      redirect_to(root_path) unless current_user.admin?
+    end
 end

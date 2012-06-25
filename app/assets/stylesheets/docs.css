@@ -149,8 +149,8 @@ a.download:hover {
   height: 0;
 }
 .clear { display: inline-block; }
+
 /* start commented backslash hack \*/
-* html .clear { height: 1%; }
+/* html .clear { height: 1%; }
 .clear { display: block; }
 /* close commented backslash hack */
-*/

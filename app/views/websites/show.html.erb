@@ -1,28 +1,68 @@
 <div class="bar draggable" id="adminbar">
-    <span class="admintitle">
-        <%= link_to ("#{current_user.name} . #{@website.title}"), current_user %>
-    </span>
     <ul class="control-panel">
-        <li id="panellinksetting">setting</li>
-        <li id="panellinkcode" class="selected">code</li>
+        <li id="panellinkuser"><%= "#{current_user.name}" %></li>
+        <li id="panellinkwebsite"><%= "#{@website.title}" %></li>
         <li id="panellinkportfolio" class="selected">portfolio</li>
-        <li id="panellinkhelp">help</li>
+        <li id="panellinkcode" class="selected">code</li>
         <li id="panellinkclear">clear</li>
+        <li id="panellinksetting">setting</li>
+        <li id="panellinkhelp">help</li>
+        <li> <%= link_to 'signout', signout_path(current_user), method: "delete" %></li>
         <span style="color:#444; cursor:move; margin-left:30px;">|||</span>
     </ul>
 </div>
 
 <div id="opensesame"></div>
 
+<section id="paneluser" class="panel draggable">
+    <header><%=@user.name %></header>
+    <p>
+    <%= form_for([:admin, @user]) do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+        <p><%= f.label :password %>
+        <%= f.password_field :password %>
+        <%= f.label :password_confirmation, "Confirm Password" %>
+        <%= f.password_field :password_confirmation %></p>
+        <%= f.submit "Save changes" %>
+    <% end %>
+    </p>
+</section>
+
+<section id="panelwebsite" class="panel draggable">
+    <header>website</header>
+    <div class="newform">
+        <%= form_for([:admin, Website.new]) do |f| %>
+            <%= f.text_field :title, placeholder:"title" %>
+            <%= f.text_field :domain, placeholder: "domain" %><br />
+            <%= f.text_area :description, placeholder: "description" %>
+            <%= f.submit %>
+        <% end %>
+    </div>   
+    <% if @user.websites.any? %> 
+        <ul id="websites">
+        <% @user.websites.each do |website| %>
+            <%= render website %>
+        <% end %>
+        </ul>
+    <% end %>
+</section>
+
 <section id="panelsetting" class="panel draggable">
     <header>setting</header>
-    <input type="text" placeholder="key in #value to change background color!" id="bodycolor" style="width:300px;"/>
+    <%= form_for(@website) do |f|%>
+        <%= f.text_field :title, placeholder:"title" %><br />
+        <%= f.text_area :description, placeholder:"description" %><br />
+        <%= f.submit "update" %>
+    <% end %>
 </section>
 
 
 <section id="panelcode" class="panel draggable">
     <header>codes</header>
-    <!--<div class="newform"> render template codes new</div>-->
+    <div class="newform"><%= render template: 'codes/new' %> </div>
     <% if @website.codes.any? %> 
         <ul id="codes">
             <% @website.codes.each do |code| %>

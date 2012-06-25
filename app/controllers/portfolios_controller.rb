@@ -1,11 +1,13 @@
 class PortfoliosController < ApplicationController
-  layout "frontend", only: [:index, :show]
-  before_filter :signed_in_user
-  before_filter :get_website, except: [:new]
-  before_filter :get_portfolio, except: [:new, :create]
+  layout "frontend", only: [:show ]
+  before_filter :signed_in_user, except: [:default, :show]
+  before_filter :get_website, except: [:default, :show]
+  before_filter :get_portfolio, except: [:default, :create, :show]
 
-  def get_portfolio
-    @portfolio = @website.portfolios.find(params[:id])
+  def default
+    @website = Website.first
+    @portfolio = @website.portfolios.first
+    redirect_to view_path(@website.title, @portfolio.permalink)
   end
 
   def create
@@ -15,12 +17,14 @@ class PortfoliosController < ApplicationController
         format.html { redirect_to @website }
         format.js
       else
-        format.html { render 'new' }
+        redirect_to edit_website_path(@website.title)
       end      
     end
   end
 
   def show
+      @website = Website.find_by_title(params[:title])
+      @portfolio = @website.portfolios.find_by_permalink(params[:permalink])
   end
 
   def edit
@@ -45,4 +49,8 @@ class PortfoliosController < ApplicationController
       format.js
     end
   end
+  
+  def get_portfolio
+    @portfolio = @website.portfolios.find(params[:id])
+  end  
 end

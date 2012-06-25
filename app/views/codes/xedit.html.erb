@@ -1,0 +1,7 @@
+<%= form_for([@website, @code], remote:true) do |f| %>
+	<%= f.text_field :name %>
+	<%= f.select :code_type, ['css', 'html'] %>
+	<%= f.text_field :description %>
+	<%= f.text_area :content, class:"code", id:"code" %>
+	<%= f.submit 'update' %>
+<% end %>

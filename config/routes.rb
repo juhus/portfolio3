@@ -1,21 +1,25 @@
 Portfolio3::Application.routes.draw do
 
-  get "portfolios/new"
-
-  root to: 'sessions#new'
-
-  resources :users 
-  resources :websites do
-    resources :codes
-    resources :portfolios
-  end
+  root to: 'portfolios#default'
+  
   resources :sessions, only: [:new, :create, :destroy]
 
-  match '/signup',  to: 'users#new'
-  match '/signin',  to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
+  scope :path => '/admin', as: 'admin' do
+    match '/signin',  to: 'sessions#new', as: 'signin'
+    match '/signout', to: 'sessions#destroy', via: :delete, as: 'signout'
+    resources :users, only: [:update]
+    resources :websites do 
+      resources :portfolios
+      resources :codes
+    end
+  end 
 
+  match ':title/:permalink', to: 'portfolios#show', as:'view'
+  match ':title', to: 'portfolios#default'
+  match '*other', to: 'portfolios#default'
 
+  #match 'websites/:website_id/portfolios/:id', to: 'portfolios#show'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

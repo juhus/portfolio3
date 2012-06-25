@@ -1,9 +1,14 @@
-<%= raw(@portfolio.content) %>
+<div id="portfolio-title"><%= raw(@portfolio.title) %></div>
+<div id="portfolio-content"><%= raw(@portfolio.content) %></div>
+<%= image_tag(@portfolio.image_url.to_s, id:"portfolio-image") %></div>
 
 <%= content_for(:navigator) do %>
-<div id="navigator-title">
+<div id="navigator">
 	<% @website.portfolios.each do |portfolio| %>
-            <p><%= link_to portfolio.title, [@website, portfolio] %></p>
+		<%= link_to (image_tag(portfolio.thumb_url.to_s, class:"portfolio-thumb")), view_path(@website.title, portfolio.permalink) %>
     <% end %>
 </div>
 <% end %>
+
+<div id="navigate-left"> <%= link_to (image_tag "arrows-07.png"	), navigateleft(@portfolio.id) %></div>
+<div id="navigate-right"><%= link_to (image_tag "arrows-06.png"), navigateright(@portfolio.id) %></div>

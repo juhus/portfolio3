@@ -1,0 +1,6 @@
+<%= div_for website do %>
+	<li><%= website.title %> | 
+        <%= link_to 'edit', admin_website_path(website) %> |
+        <%= link_to 'delete', admin_website_path(website), method: :delete, remote: true %>
+    </li>
+<% end %>
