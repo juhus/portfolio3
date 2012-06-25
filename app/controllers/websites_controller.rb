@@ -11,7 +11,7 @@ class WebsitesController < ApplicationController
           format.html { redirect_to @website }
           format.js
         else
-          redirect_to admin_website_path(@website)
+          redirect_to website_path(@website)
         end      
       end
   	end

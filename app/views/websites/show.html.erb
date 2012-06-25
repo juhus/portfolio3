@@ -7,7 +7,7 @@
         <li id="panellinkclear">clear</li>
         <li id="panellinksetting">setting</li>
         <li id="panellinkhelp">help</li>
-        <li> <%= link_to 'signout', signout_path(current_user), method: "delete" %></li>
+        <li> <%= link_to 'signout', signout_path, method: "delete" %></li>
         <span style="color:#444; cursor:move; margin-left:30px;">|||</span>
     </ul>
 </div>
@@ -17,7 +17,7 @@
 <section id="paneluser" class="panel draggable">
     <header><%=@user.name %></header>
     <p>
-    <%= form_for([:admin, @user]) do |f| %>
+    <%= form_for(@user) do |f| %>
         <%= f.label :name %>
         <%= f.text_field :name %>
         <%= f.label :email %>
@@ -34,7 +34,7 @@
 <section id="panelwebsite" class="panel draggable">
     <header>website</header>
     <div class="newform">
-        <%= form_for([:admin, Website.new]) do |f| %>
+        <%= form_for(Website.new) do |f| %>
             <%= f.text_field :title, placeholder:"title" %>
             <%= f.text_field :domain, placeholder: "domain" %><br />
             <%= f.text_area :description, placeholder: "description" %>
@@ -52,7 +52,7 @@
 
 <section id="panelsetting" class="panel draggable">
     <header>setting</header>
-    <%= form_for(@website) do |f|%>
+    <%= form_for( @website) do |f|%>
         <%= f.text_field :title, placeholder:"title" %><br />
         <%= f.text_area :description, placeholder:"description" %><br />
         <%= f.submit "update" %>

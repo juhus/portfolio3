@@ -2,6 +2,6 @@
 	<li><%= portfolio.title %> | 
         <%= link_to 'view', view_path(@website.title, portfolio.permalink) %> | 
         <%= link_to 'edit', edit_website_portfolio_path(@website, portfolio), remote: true  %> | 
-		<%= link_to 'delete', [@website, portfolio], method: :delete, remote: true  %>
+		<%= link_to 'delete', website_portfolio_path(@website, portfolio), method: :delete, remote: true  %>
     </li>
 <% end %>

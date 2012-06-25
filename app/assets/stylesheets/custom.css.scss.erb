@@ -4,8 +4,6 @@ body{
     font-family: 'Arial';
     }
 
-.ui-resizable-helper { border: 2px dotted #00F; }
-
 ul {
     padding:0;
 }
@@ -24,6 +22,7 @@ header{
 }
 
 input,select{
+    position:relative;
     margin:3px 3px 6px 0;
 }
 
@@ -135,14 +134,6 @@ ul#codes li, ul#portfolios li, ul#websites li {
     background-image: -moz-linear-gradient(bottom, rgb(189,189,189) 0%, rgb(235,235,235) 100%);
     background-image: -webkit-linear-gradient(bottom, rgb(189,189,189) 0%, rgb(235,235,235) 100%);
     background-image: -ms-linear-gradient(bottom, rgb(189,189,189) 0%, rgb(235,235,235) 100%);
-
-    background-image: -webkit-gradient(
-    linear,
-    left bottom,
-    left top,
-    color-stop(0, rgb(189,189,189)),
-    color-stop(1, rgb(235,235,235))
-    );
     }
 
 input[type="text"].signin,input[type="password"].signin {
@@ -280,26 +271,9 @@ section ul{
 
 
 @media screen and (max-width:640px){
-  .item {
-    width:150px;
-    height:150px;
-    }    
   }
 
   
 
 @media screen and (max-width:320px){
-  .item {
-    width:90px;
-    height:90px;
-    margin-top:5%;
-    margin-left:5%;
-    }
-
-  button {
-    width:100%;
-    color:#fff;
-    font-weight:bold;
-    padding:2%;
-    }
 }

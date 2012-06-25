@@ -4,9 +4,9 @@ Portfolio3::Application.routes.draw do
   
   resources :sessions, only: [:new, :create, :destroy]
 
-  scope :path => '/admin', as: 'admin' do
-    match '/signin',  to: 'sessions#new', as: 'signin'
-    match '/signout', to: 'sessions#destroy', via: :delete, as: 'signout'
+  scope :path => '/admin' do
+    match '/signin',  to: 'sessions#new'
+    match '/signout', to: 'sessions#destroy', via: :delete
     resources :users, only: [:update]
     resources :websites do 
       resources :portfolios
