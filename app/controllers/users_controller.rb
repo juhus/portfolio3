@@ -36,6 +36,8 @@ before_filter :admin_user
     if @user.update_attributes(params[:user])
       flash[:success] = "Profile updated"
       sign_in @user
+    else
+      flash[:alert] = "Unsuccessful, maybe you did not fill up password and password_confirmation correctly."
     end
     redirect_back_or root_path
   end

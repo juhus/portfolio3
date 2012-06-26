@@ -4,4 +4,8 @@ class Portfolio < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   mount_uploader :thumb, ImageUploader
   validates :website_id, presence:true
+  acts_as_list
+  def self.publish
+  	where(:publish => true)
+  end
 end

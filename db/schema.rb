@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120623085928) do
+ActiveRecord::Schema.define(:version => 20120626141356) do
 
   create_table "codes", :force => true do |t|
     t.string   "name"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20120623085928) do
     t.datetime "updated_at", :null => false
     t.string   "image"
     t.string   "thumb"
+    t.integer  "position"
   end
 
   add_index "portfolios", ["website_id"], :name => "index_portfolios_on_website_id"

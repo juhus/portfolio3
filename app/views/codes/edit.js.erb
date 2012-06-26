@@ -1,6 +1,6 @@
 var popup = '<div class="panel"> <%= escape_javascript(render "form") %> </div>'
 $('div#opensesame').prepend(popup);
-$('div#opensesame>div.panel').prepend('<div class="drag"></div><a href="#" class="hide">hide</a>').draggable({handle:'.drag'});
+$('div#opensesame div.panel:first-child').prepend('<div class="drag"></div><a href="#" class="hide">hide</a>').draggable({handle:'.drag'});
 
 $('.hide').click(function(e){
       e.preventDefault();

@@ -1,6 +1,6 @@
 module PortfoliosHelper
 	def navigateleft(z)
-		list = Portfolio.all.collect{|i| i.id}
+		list = Portfolio.publish.all.collect{|i| i.id}
 		for x in list
 			if(x == z)
 				@current_position = x
@@ -16,7 +16,7 @@ module PortfoliosHelper
 	end
 
 	def navigateright(z)
-		list = Portfolio.all.collect{|i| i.id}
+		list = Portfolio.publish.all.collect{|i| i.id}
 		for x in list
 			if(x == z)
 				@current_position = x
@@ -30,4 +30,5 @@ module PortfoliosHelper
 		dest_portfolio = Portfolio.find(@next_position)
 		return "#{dest_portfolio.permalink}"
 	end
+	
 end

@@ -8,7 +8,7 @@
         <li id="panellinksetting">setting</li>
         <li id="panellinkhelp">help</li>
         <li> <%= link_to 'signout', signout_path, method: "delete" %></li>
-        <span style="color:#444; cursor:move; margin-left:30px;">|||</span>
+        <span class="adminbarhandle">|||</span>
     </ul>
 </div>
 
@@ -61,6 +61,7 @@
 
 
 <section id="panelcode" class="panel draggable">
+    <div class="draggable"></div>
     <header>codes</header>
     <div class="newform"><%= render template: 'codes/new' %> </div>
     <% if @website.codes.any? %> 
@@ -76,8 +77,8 @@
     <header>portfolio</header>
     <div class="newform"><%= render template:"portfolios/new" %></div>
     <% if @website.portfolios.any? %> 
-        <ul id="portfolios">
-            <% @website.portfolios.each do |portfolio| %>
+        <ul id="portfolios" data-update-url="<%= url_for(:action => 'sort', :controller => 'portfolios', :only_path => false, :protocol => 'http') %>">
+            <% @website.portfolios.order("position").each do |portfolio| %>
             <%= render portfolio %>
         <% end %>
         </ul>

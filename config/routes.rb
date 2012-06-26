@@ -9,7 +9,9 @@ Portfolio3::Application.routes.draw do
     match '/signout', to: 'sessions#destroy', via: :delete
     resources :users, only: [:update]
     resources :websites do 
-      resources :portfolios
+      resources :portfolios do
+        collection { post :sort }
+      end
       resources :codes
     end
   end 

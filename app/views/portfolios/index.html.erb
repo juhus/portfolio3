@@ -1,0 +1,11 @@
+<h1>portfolios #index</h1>
+
+<ul id="portfolios" data-update-url="<%= sort_website_portfolios_url %>">
+<% @portfolios.each do |a| %>
+  <%= content_tag_for :li, a do %>
+    <span class="handle">[drag]</span>
+    <%= link_to a.title, "#" %>
+    <%= link_to 'delete', "#" %>
+  <% end %>
+<% end %>
+</ul>

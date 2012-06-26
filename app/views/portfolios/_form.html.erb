@@ -1,4 +1,4 @@
- <%= form_for([@website, @portfolio], remote:true) do |f| %>
+ <%= form_for([@website, @portfolio], remote:true ) do |f| %>
 	<%= f.text_field :title, placeholder:"title" %>
 	<%= f.text_field :permalink, placeholder:"permalink" %>
 	<%= f.text_area :content, placeholder:"content", class:"code", id:"code" %>
