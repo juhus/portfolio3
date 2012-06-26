@@ -4,7 +4,7 @@
 
 <%= content_for(:navigator) do %>
 <div id="navigator">
-	<% @website.portfolios.publish.each do |portfolio| %>
+	<% @website.portfolios.publish.order("position").each do |portfolio| %>
 		<%= link_to (image_tag(portfolio.thumb_url.to_s, class:"portfolio-thumb")), view_path(@website.title, portfolio.permalink) %>
     <% end %>
 </div>
