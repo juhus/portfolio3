@@ -77,7 +77,7 @@
     <header>portfolio</header>
     <div class="newform"><%= render template:"portfolios/new" %></div>
     <% if @website.portfolios.any? %> 
-        <ul id="portfolios" data-update-url="<%= url_for(:action => 'sort', :controller => 'portfolios', :only_path => false, :protocol => 'http') %>">
+        <ul id="portfolios">
             <% @website.portfolios.order("position").each do |portfolio| %>
             <%= render portfolio %>
         <% end %>
